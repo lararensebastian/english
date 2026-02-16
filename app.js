@@ -358,40 +358,6 @@ function renderPart(){
       markPartDone();
     });
   }
-
-
-  if(part.type==="placement"){
-    // Adaptive placement test (A1.1–C1)
-    const cfg = part.config;
-    const LEVELS = cfg.levels;
-    const RULES = cfg.rules;
-    const targets = cfg.targets;
-    const weights = cfg.weights;
-    const bank = part.bank;
-
-    const now = ()=>Date.now();
-    const startedAt = now();
-    const timeLimitMs = (cfg.timeLimitMinutes||60) * 60 * 1000;
-
-    const session = {
-      stage:"grammar",
-      stageOrder:["grammar","vocab","reading","writing","report"],
-      levelIndex:{
-        grammar: LEVELS.indexOf(targets.grammar.startLevel || "A2.1"),
-        vocab: LEVELS.indexOf(targets.vocab.startLevel || "A2.1"),
-        reading: LEVELS.indexOf(targets.reading.startLevel || "A2.1"),
-      },
-      streak:{ grammar:{c:0,w:0}, vocab:{c:0,w:0}, reading:{c:0,w:0} },
-      asked:{ grammar:new Set(), vocab:new Set(), reading:new Set() },
-      stableCount:{ grammar:0, vocab:0, reading:0 },
-      lastLevelIndex:{ grammar:null, vocab:null, reading:null },
-      results:{
-        grammar:{correct:0,total:0, history:[]},
-        vocab:{correct:0,total:0, history:[]},
-        reading:{texts:[], score:0, history:[]}, // score 0..100
-        writing:{text:"", words:0, metrics:{}},
-        final:{}
-      }
     };
 
     // helpers
@@ -873,6 +839,541 @@ function renderPart(){
 
     // initial render
     renderStage();
+    return;
+  }
+
+
+
+  if(part.type==="placement_v3"){
+    const cfg = part.config;
+    const LEVELS = cfg.levels;
+    const bands = cfg.bands;
+    const sub = cfg.sublevelRules;
+    const weights = cfg.weights;
+    const bank = part.bank;
+
+    const startedAt = Date.now();
+    const timeLimitMs = (cfg.timeLimitMinutes||60) * 60 * 1000;
+    const timeLeftMs = ()=>Math.max(0, timeLimitMs - (Date.now()-startedAt));
+    const timeLabel = ()=>{
+      const ms=timeLeftMs(); const m=Math.floor(ms/60000); const s=Math.floor((ms%60000)/1000);
+      return `${m}:${String(s).padStart(2,"0")}`;
+    };
+    const tokenize = (s)=>String(s).trim().split(/\s+/).filter(Boolean);
+    const clamp = (x,a,b)=>Math.max(a,Math.min(b,x));
+    const pct = (c,t)=>t?Math.round((c/t)*100):0;
+
+    const local = {
+      step:"intro", // intro | band | reading | writing | report
+      bandIndex:0,
+      bandScores:[], // [{id, grammarPct, vocabPct, readingPct, totalPct, pass}]
+      section:"grammar",
+      qIndex:0,
+      correct:0,
+      total:0,
+      items:[],
+      writingText:"",
+      writingAnalysis:null
+    };
+
+    const pools = {
+      A1: { grammar: bank.grammar.filter(x=>["A1.1","A1.2"].includes(x.level)),
+            vocab: bank.vocab.filter(x=>["A1.1","A1.2"].includes(x.level)) },
+      A2: { grammar: bank.grammar.filter(x=>["A2.1","A2.2"].includes(x.level)),
+            vocab: bank.vocab.filter(x=>["A2.1","A2.2"].includes(x.level)) },
+      B1: { grammar: bank.grammar.filter(x=>["B1.1","B1.2"].includes(x.level)),
+            vocab: bank.vocab.filter(x=>["B1.1","B1.2"].includes(x.level)) }
+    };
+
+    function sampleUnique(arr, n){
+      const idxs = arr.map((_,i)=>i);
+      for(let i=idxs.length-1;i>0;i--){
+        const j=Math.floor(Math.random()*(i+1));
+        [idxs[i], idxs[j]] = [idxs[j], idxs[i]];
+      }
+      return idxs.slice(0, Math.min(n, idxs.length)).map(i=>arr[i]);
+    }
+
+    function bandReading(bandId){
+      return (bank.reading||[]).find(x=>x.band===bandId) || null;
+    }
+
+    function analyzeWritingMild(text){
+      const words = tokenize(text);
+      const wc = words.length;
+      const sentences = text.split(/[.!?]+/).map(x=>x.trim()).filter(Boolean);
+      const sc = sentences.length;
+      const avgLen = sc ? (wc/sc) : 0;
+      const hasBecause = /\bbecause\b/i.test(text);
+      const hasBut = /\bbut\b/i.test(text);
+      const hasPast = /\b(went|was|were|did|had)\b/i.test(text) || /\b\w+ed\b/i.test(text);
+      const hasFuture = /\b(will|going to)\b/i.test(text);
+
+      let idx = 0; // A1.1
+      if(sc >= 6 && wc >= 40) idx = 1; // A1.2
+      if(sc >= 8 && wc >= 70) idx = 2; // A2.1
+      if(sc >= 10 && wc >= 90 && (hasPast || hasFuture) && (hasBecause || hasBut)) idx = 3; // A2.2
+      if(wc >= 120 && sc >= 10 && (hasBecause || hasBut) && avgLen >= 9) idx = 4; // B1.1
+      if(wc >= 150 && sc >= 12 && avgLen >= 9.5) idx = 5; // B1.2
+
+      return {words:wc, sentences:sc, avgWordsPerSentence:Math.round(avgLen*10)/10, flags:{hasBecause,hasBut,hasPast,hasFuture}, level: LEVELS[idx]};
+    }
+
+    function computeSublevel(bandId, pctScore){
+      const rule = sub[bandId];
+      if(!rule) return bandId==="A1" ? "A1.1" : (bandId==="A2" ? "A2.1" : "B1.1");
+      return (pctScore < rule.splitPct) ? rule.low : rule.high;
+    }
+
+    function levelIndex(lvl){ return LEVELS.indexOf(lvl); }
+
+    function overallFromSubs(g, v, r, w){
+      const gi = levelIndex(g), vi = levelIndex(v), ri = levelIndex(r), wi = levelIndex(w);
+      const idx = (gi*weights.grammar + vi*weights.vocab + ri*weights.reading + wi*weights.writing) /
+                  (weights.grammar+weights.vocab+weights.reading+weights.writing);
+      return LEVELS[clamp(Math.round(idx),0,LEVELS.length-1)];
+    }
+
+    function year9Status(overall){
+      if(overall==="A1.1") return {label:"Långt ifrån att nå målen", code:"RED"};
+      if(overall==="A1.2") return {label:"Risk att inte nå E", code:"ORANGE"};
+      if(overall==="A2.1") return {label:"Riskzon – behöver stöd för att nå E", code:"ORANGE"};
+      if(overall==="A2.2") return {label:"Möjlighet att nå E (om du jobbar regelbundet)", code:"YELLOW"};
+      if(overall==="B1.1") return {label:"Goda möjligheter att nå E (stabil)", code:"GREEN"};
+      if(overall==="B1.2") return {label:"Stabil E – på väg mot C", code:"BLUE"};
+      return {label:"", code:""};
+    }
+
+    function confidenceFromBands(bandScores){
+      if(!bandScores.length) return "Low";
+      const avg = bandScores.reduce((a,b)=>a+(b.totalPct||0),0)/bandScores.length;
+      if(avg >= 75) return "High";
+      if(avg >= 65) return "Medium";
+      return "Low";
+    }
+
+    function stabilityScore(bandScores){
+      const totals = bandScores.map(x=>x.totalPct ?? 0);
+      if(!totals.length) return 0;
+      const mean = totals.reduce((a,b)=>a+b,0)/totals.length;
+      const varr = totals.reduce((a,x)=>a + Math.pow(x-mean,2),0)/totals.length;
+      return Math.max(0, Math.min(1, 1 - (Math.sqrt(varr)/35)));
+    }
+
+    function renderShell(bodyHtml){
+      const container = $("#partContainer");
+      container.innerHTML = `
+        <div class="box">
+          <div class="row" style="justify-content:space-between; align-items:center">
+            <div><b>Kartläggning</b> • CEFR + Åk 9</div>
+            <div class="badge">⏳ <span id="timer">${timeLabel()}</span></div>
+          </div>
+          <div class="small" style="margin-top:8px">
+            Semi-adaptivt: A1 → A2 → B1. Om du inte klarar ett block stoppar vi och sammanställer.
+          </div>
+        </div>
+        <div id="pBody" style="margin-top:12px"></div>
+      `;
+      $("#pBody").innerHTML = bodyHtml;
+    }
+
+    function tick(){
+      const t = $("#timer");
+      if(t) t.textContent = timeLabel();
+      if(timeLeftMs()<=0 && local.step!=="report"){
+        local.step="report";
+        render();
+        return;
+      }
+      setTimeout(tick, 1000);
+    }
+
+    function startBand(){
+      const bandId = bands[local.bandIndex].id;
+      const b = bands[local.bandIndex];
+      local.section="grammar";
+      local.qIndex=0; local.correct=0; local.total=0;
+      local.items = sampleUnique(pools[bandId].grammar, b.nGrammar);
+      local.step="band";
+    }
+
+    function nextSectionOrReading(){
+      const bandId = bands[local.bandIndex].id;
+      const b = bands[local.bandIndex];
+      local.bandScores[local.bandIndex] = local.bandScores[local.bandIndex] || {id:bandId};
+      if(local.section==="grammar"){
+        local.bandScores[local.bandIndex].grammarPct = pct(local.correct, local.total);
+        local.section="vocab";
+        local.qIndex=0; local.correct=0; local.total=0;
+        local.items = sampleUnique(pools[bandId].vocab, b.nVocab);
+        local.step="band";
+        return;
+      }
+      if(local.section==="vocab"){
+        local.bandScores[local.bandIndex].vocabPct = pct(local.correct, local.total);
+        local.step="reading";
+        return;
+      }
+    }
+
+    function finishReading(readPct){
+      const bandId = bands[local.bandIndex].id;
+      const b = bands[local.bandIndex];
+      local.bandScores[local.bandIndex] = local.bandScores[local.bandIndex] || {id:bandId};
+      local.bandScores[local.bandIndex].readingPct = readPct;
+
+      const g = local.bandScores[local.bandIndex].grammarPct ?? 0;
+      const v = local.bandScores[local.bandIndex].vocabPct ?? 0;
+      const r = readPct ?? 0;
+      const totalPct = Math.round((g*0.45 + v*0.35 + r*0.20));
+      const pass = totalPct >= b.minPassPct;
+
+      local.bandScores[local.bandIndex].totalPct = totalPct;
+      local.bandScores[local.bandIndex].pass = pass;
+
+      if(pass && local.bandIndex < bands.length-1){
+        local.bandIndex += 1;
+        startBand();
+        render();
+        return;
+      }
+      local.step="writing";
+      render();
+    }
+
+    function renderIntro(){
+      renderShell(`
+        <div class="card">
+          <h3>Full placement (60 min)</h3>
+          <div class="small">
+            Du får två resultat:<br>
+            • <b>CEFR-nivå</b> (A1.1 → B1.2)<br>
+            • <b>Åk 9-status</b> (risk / möjlighet / stabil E / på väg mot C)
+          </div>
+          <hr/>
+          <div class="small">
+            Upplägg: A1-block, A2-block, B1-block. Om du inte klarar ett block stoppar vi och sammanställer.<br>
+            Tips: svara lugnt och undvik att gissa.
+          </div>
+          <div class="row" style="margin-top:12px">
+            <button class="btn" id="startPlacement">Start</button>
+          </div>
+        </div>
+      `);
+      $("#startPlacement").addEventListener("click", ()=>{
+        local.bandIndex=0; local.bandScores=[];
+        startBand();
+        render();
+      });
+    }
+
+    function renderBand(){
+      const bandId = bands[local.bandIndex].id;
+      const sectionName = local.section==="grammar" ? "Use of English" : "Vocabulary";
+      const items = local.items;
+      const item = items[local.qIndex];
+
+      renderShell(`
+        <div class="q">
+          <div class="row" style="justify-content:space-between">
+            <div><b>Block:</b> ${bandId} • <b>Del:</b> ${sectionName}</div>
+            <div class="small">Fråga ${local.qIndex+1} / ${items.length}</div>
+          </div>
+          <p style="margin-top:10px">${esc(item.q)}</p>
+          <div class="opts">
+            ${item.opts.map((o,ix)=>`<div class="opt" data-ix="${ix}">${esc(o)}</div>`).join("")}
+          </div>
+          <div class="fb" id="fb"></div>
+          <div class="row" style="margin-top:12px">
+            <button class="btn" id="check">Check</button>
+            <button class="btn secondary" id="skip">Skip</button>
+          </div>
+          <div class="footer">Gör klart blocket. Resultatet avgör om du går vidare.</div>
+        </div>
+      `);
+
+      let selected=null;
+      $$(".opt").forEach(el=>{
+        el.addEventListener("click", ()=>{
+          $$(".opt").forEach(x=>x.classList.remove("selected"));
+          el.classList.add("selected");
+          selected = Number(el.dataset.ix);
+        });
+      });
+
+      $("#skip").addEventListener("click", ()=>{
+        local.total += 1;
+        const fb = $("#fb");
+        fb.className = "fb show bad";
+        fb.innerHTML = `✗ Skipped. ${esc(item.exp||"")}`;
+        setTimeout(()=>{
+          local.qIndex += 1;
+          if(local.qIndex >= items.length) nextSectionOrReading();
+          render();
+        }, 300);
+      });
+
+      $("#check").addEventListener("click", ()=>{
+        if(selected===null){ alert("Välj ett alternativ."); return; }
+        const ok = selected===item.a;
+        local.total += 1;
+        if(ok) local.correct += 1;
+
+        addAccuracy(ok);
+        if(ok) addPoints(10);
+        saveState();
+
+        $$(".opt").forEach((el,ix)=>{
+          const cls = (ix===item.a) ? "correct" : ((ix===selected) ? "incorrect" : null);
+          if(cls) el.classList.add(cls);
+          el.classList.remove("selected");
+        });
+
+        const fb = $("#fb");
+        fb.className = "fb show " + (ok ? "good":"bad");
+        fb.innerHTML = ok ? `✓ Rätt. ${esc(item.exp||"")}` : `✗ Inte riktigt. ${esc(item.exp||"")}`;
+
+        setTimeout(()=>{
+          local.qIndex += 1;
+          if(local.qIndex >= items.length) nextSectionOrReading();
+          render();
+        }, 450);
+      });
+    }
+
+    function renderReading(){
+      const bandId = bands[local.bandIndex].id;
+      const passage = bandReading(bandId);
+      if(!passage){
+        finishReading(0);
+        return;
+      }
+
+      renderShell(`
+        <div class="q">
+          <div class="row" style="justify-content:space-between">
+            <div><b>Block:</b> ${bandId} • <b>Reading</b></div>
+            <div class="small">5 frågor</div>
+          </div>
+          <div class="box" style="margin-top:10px">${esc(passage.text)}</div>
+          <div id="rq" style="margin-top:12px">
+            ${passage.items.map((it,i)=>`
+              <div class="q" style="margin:10px 0">
+                <p><b>${i+1}.</b> ${esc(it.q)}</p>
+                <div class="opts">
+                  ${it.opts.map((o,ix)=>`<div class="opt" data-q="${i}" data-ix="${ix}">${esc(o)}</div>`).join("")}
+                </div>
+              </div>
+            `).join("")}
+          </div>
+          <div class="row" style="margin-top:12px">
+            <button class="btn" id="readCheck">Check reading</button>
+          </div>
+          <div class="fb" id="readFb"></div>
+        </div>
+      `);
+
+      const answers = new Array(passage.items.length).fill(null);
+      $$(".opt").forEach(el=>{
+        el.addEventListener("click", ()=>{
+          const qi = Number(el.dataset.q);
+          el.closest(".q").querySelectorAll(".opt").forEach(x=>x.classList.remove("selected"));
+          el.classList.add("selected");
+          answers[qi] = Number(el.dataset.ix);
+        });
+      });
+
+      $("#readCheck").addEventListener("click", ()=>{
+        if(answers.some(x=>x===null)){
+          alert("Svara på alla frågor i reading-delen.");
+          return;
+        }
+        let correct=0;
+        passage.items.forEach((it,i)=>{
+          const ok = answers[i]===it.a;
+          if(ok) correct++;
+          addAccuracy(ok);
+          if(ok) addPoints(10);
+        });
+        saveState();
+
+        const score = Math.round((correct/passage.items.length)*100);
+        const fb = $("#readFb");
+        fb.className = "fb show " + (score>=60 ? "good":"bad");
+        fb.innerHTML = `Reading score: <b>${score}%</b>.`;
+
+        setTimeout(()=>finishReading(score), 650);
+      });
+    }
+
+    function renderWriting(){
+      const last = local.bandScores[local.bandScores.length-1] || {id:"A1", grammarPct:0, vocabPct:0, readingPct:0, totalPct:0};
+      const bandId = last.id || "A1";
+      const gSub = computeSublevel(bandId, last.grammarPct ?? 0);
+      const vSub = computeSublevel(bandId, last.vocabPct ?? 0);
+      const rSub = computeSublevel(bandId, last.readingPct ?? 0);
+      const idxs = [levelIndex(gSub), levelIndex(vSub), levelIndex(rSub)].sort((a,b)=>a-b);
+      const target = LEVELS[idxs[1]];
+      const prompt = (bank.writingPrompts||{})[target] || (bank.writingPrompts||{})["A2.1"];
+
+      renderShell(`
+        <div class="q">
+          <div class="row" style="justify-content:space-between">
+            <div><b>Writing</b> (mild)</div>
+            <div class="small">Rekommenderad nivå: <b>${esc(target)}</b></div>
+          </div>
+          <div class="box" style="margin-top:10px"><b>Task</b><br><span class="small">${esc(prompt)}</span></div>
+          <div style="margin-top:10px">
+            <textarea id="wText" placeholder="Write here...">${esc(local.writingText||"")}</textarea>
+            <div class="row" style="justify-content:space-between; margin-top:8px">
+              <div class="small">Words: <b id="wCount">0</b></div>
+              <button class="btn secondary" id="wAnalyze">Analyze</button>
+            </div>
+            <div class="fb" id="wFb"></div>
+          </div>
+          <div class="row" style="margin-top:12px">
+            <button class="btn" id="finish">Finish & report</button>
+          </div>
+        </div>
+      `);
+
+      const updateCount = ()=>{
+        const t = $("#wText").value;
+        $("#wCount").textContent = tokenize(t).length;
+      };
+      updateCount();
+      $("#wText").addEventListener("input", updateCount);
+
+      $("#wAnalyze").addEventListener("click", ()=>{
+        const t = $("#wText").value;
+        local.writingText = t;
+        local.writingAnalysis = analyzeWritingMild(t);
+        const a = local.writingAnalysis;
+        const fb = $("#wFb");
+        fb.className = "fb show";
+        fb.innerHTML = `Estimated writing level: <b>${esc(a.level)}</b><br>
+          Sentences: <b>${a.sentences}</b> • Words: <b>${a.words}</b> • Avg words/sentence: <b>${a.avgWordsPerSentence}</b><br>
+          Signals: <span class="small">because=${a.flags.hasBecause?"✓":"–"} • but=${a.flags.hasBut?"✓":"–"} • past=${a.flags.hasPast?"✓":"–"} • future=${a.flags.hasFuture?"✓":"–"}</span>`;
+        saveState();
+      });
+
+      $("#finish").addEventListener("click", ()=>{
+        const t = $("#wText").value;
+        local.writingText = t;
+        local.writingAnalysis = analyzeWritingMild(t);
+        local.step="report";
+        render();
+      });
+    }
+
+    function renderReport(){
+      const last = local.bandScores[local.bandScores.length-1] || {id:"A1", grammarPct:0, vocabPct:0, readingPct:0, totalPct:0, pass:false};
+      const bandId = last.id;
+
+      const gLevel = computeSublevel(bandId, last.grammarPct ?? 0);
+      const vLevel = computeSublevel(bandId, last.vocabPct ?? 0);
+      const rLevel = computeSublevel(bandId, last.readingPct ?? 0);
+      const wLevel = (local.writingAnalysis && local.writingAnalysis.level) ? local.writingAnalysis.level : computeSublevel(bandId, last.totalPct ?? 0);
+
+      const overall = overallFromSubs(gLevel, vLevel, rLevel, wLevel);
+      const y9 = year9Status(overall);
+      const conf = confidenceFromBands(local.bandScores);
+      const stab = stabilityScore(local.bandScores);
+
+      // Mark module completed and award points
+      state.completed[currentModuleId] = true;
+      state.stats.sessions += 1;
+      addPoints(100);
+      saveState();
+
+      const reportText = [
+        "PLACEMENT REPORT (IM Edition)",
+        `Overall (CEFR): ${overall}`,
+        `Åk 9-status: ${y9.label}`,
+        `Confidence: ${conf}`,
+        `Stability: ${stab.toFixed(2)}`,
+        "",
+        `Grammar: ${gLevel} (${Math.round(last.grammarPct||0)}%)`,
+        `Vocabulary: ${vLevel} (${Math.round(last.vocabPct||0)}%)`,
+        `Reading: ${rLevel} (${Math.round(last.readingPct||0)}%)`,
+        `Writing: ${wLevel} (${local.writingAnalysis?.words||0} words)`,
+        "",
+        `Time (ISO): ${new Date().toISOString()}`
+      ].join("\n");
+
+      const badgeClass = (y9.code==="GREEN" || y9.code==="BLUE") ? "good" : "warn";
+
+      renderShell(`
+        <div class="q">
+          <div class="row" style="justify-content:space-between; align-items:center">
+            <div><b>Resultat</b></div>
+            <div class="badge ${badgeClass}">CEFR: ${esc(overall)}</div>
+          </div>
+
+          <div class="box" style="margin-top:12px">
+            <b>Åk 9-status</b><br>
+            <span class="small">${esc(y9.label)}</span>
+          </div>
+
+          <div class="grid" style="margin-top:12px">
+            <div class="card">
+              <h3>Grammar</h3>
+              <div class="small">Nivå: <b>${esc(gLevel)}</b></div>
+              <div class="small">Score: <b>${Math.round(last.grammarPct||0)}%</b></div>
+            </div>
+            <div class="card">
+              <h3>Vocabulary</h3>
+              <div class="small">Nivå: <b>${esc(vLevel)}</b></div>
+              <div class="small">Score: <b>${Math.round(last.vocabPct||0)}%</b></div>
+            </div>
+            <div class="card">
+              <h3>Reading</h3>
+              <div class="small">Nivå: <b>${esc(rLevel)}</b></div>
+              <div class="small">Score: <b>${Math.round(last.readingPct||0)}%</b></div>
+            </div>
+            <div class="card">
+              <h3>Writing</h3>
+              <div class="small">Nivå: <b>${esc(wLevel)}</b></div>
+              <div class="small">Words: <b>${local.writingAnalysis?.words||0}</b></div>
+            </div>
+          </div>
+
+          <div class="box" style="margin-top:14px">
+            <div class="small">Confidence: <b>${esc(conf)}</b> • Stability: <b>${stab.toFixed(2)}</b></div>
+          </div>
+
+          <div class="box" style="margin-top:14px">
+            <b>Kopiera rapport</b>
+            <textarea id="repText" style="min-height:160px">${esc(reportText)}</textarea>
+            <div class="row" style="margin-top:10px">
+              <button class="btn" id="copyRep">Copy</button>
+              <button class="btn secondary" id="doneRep">Back to home</button>
+            </div>
+          </div>
+        </div>
+      `);
+
+      $("#copyRep").addEventListener("click", async ()=>{
+        const t = $("#repText").value;
+        try{ await navigator.clipboard.writeText(t); alert("Kopierat!"); }
+        catch{ $("#repText").select(); document.execCommand("copy"); alert("Kopierat!"); }
+      });
+      $("#doneRep").addEventListener("click", ()=>{
+        renderHome();
+        showView("home");
+      });
+    }
+
+    function render(){
+      if(local.step==="intro"){ renderIntro(); return; }
+      if(local.step==="band"){ renderBand(); return; }
+      if(local.step==="reading"){ renderReading(); return; }
+      if(local.step==="writing"){ renderWriting(); return; }
+      if(local.step==="report"){ renderReport(); return; }
+    }
+
+    render();
+    tick();
     return;
   }
 
