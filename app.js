@@ -606,7 +606,8 @@ function renderPart(){
           // lock options
           body.querySelectorAll(".opt").forEach((el,i)=>{
             el.classList.remove("selected");
-            el.classList.add(i===q.a ? "correct" : (i===selected ? "incorrect" : ""));
+            const cls = (i===q.a) ? "correct" : ((i===selected) ? "incorrect" : null);
+            if(cls) el.classList.add(cls);
           });
           const fb = body.querySelector("#mcFb");
           fb.className = "fb show " + (ok ? "good":"bad");
