@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>English Deep Practice</title>
+  <link rel="stylesheet" href="./style.css"/>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div>
+        <h1 class="h1">English Deep Practice</h1>
+        <div class="tag">Självständigt arbetspass (A2–B1) • 3–4 timmar • byggt för IM-elever</div>
+      </div>
+      <div class="pills">
+        <div class="pill"><span>⭐</span><div><strong id="points">0</strong><div class="small">Poäng</div></div></div>
+        <div class="pill"><span>🧠</span><div><strong id="accuracy">0%</strong><div class="small">Accuracy</div></div></div>
+        <div class="pill"><span>✅</span><div><strong id="sessions">0</strong><div class="small">Sessioner</div></div></div>
+      </div>
+    </div>
+
+    <div id="home" class="view active">
+      <div class="card">
+        <div class="row" style="justify-content:space-between; align-items:center">
+          <div>
+            <div style="font-weight:900;font-size:18px">Din progress</div>
+            <div class="small">Klart = modulen är helt genomförd.</div>
+          </div>
+          <div class="row">
+            <button class="btn secondary" id="resetAll">Reset allt</button>
+          </div>
+        </div>
+        <div style="margin-top:12px" class="progressWrap"><div class="progress" id="overallBar"></div></div>
+        <div class="footer">Tips: jobba lugnt och noggrant. Skriv hellre kort och rätt än långt och fel.</div>
+      </div>
+
+      <div class="grid" id="moduleGrid"></div>
+
+      <div class="footer">
+        Tangenter: <span class="kbd">N</span> nästa del • <span class="kbd">P</span> förra del (inne i modul).
+      </div>
+    </div>
+
+    <div id="module" class="view">
+      <div class="card">
+        <div class="row" style="justify-content:space-between; align-items:center">
+          <div class="row">
+            <button class="btn secondary" id="backHome">← Hem</button>
+            <div style="font-size:30px" id="modIcon">📘</div>
+            <div>
+              <div style="font-weight:900;font-size:20px" id="modTitle">Module</div>
+              <div class="small" id="modMeta"></div>
+            </div>
+          </div>
+          <div class="badge" id="partIndex">1 / 6</div>
+        </div>
+
+        <div class="small" id="modDesc" style="margin-top:10px"></div>
+
+        <div style="margin-top:12px" class="progressWrap"><div class="progress" id="moduleBar"></div></div>
+
+        <hr/>
+
+        <div class="partTitle">
+          <h2 id="partName">Part title</h2>
+          <div class="partMeta">Tips: Läs, gör, skriv. Fusk-klicka inte.</div>
+        </div>
+
+        <div id="partContainer" style="margin-top:12px"></div>
+
+        <hr/>
+
+        <div class="row" style="justify-content:space-between">
+          <button class="btn secondary" id="prevBtn">← Previous</button>
+          <button class="btn secondary" id="nextBtn">Next →</button>
+        </div>
+
+        <div class="footer">Poäng: 10 per rätt MC-svar + 50 bonus när du slutför en modul.</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>

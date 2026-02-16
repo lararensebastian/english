@@ -1,0 +1,692 @@
+{
+  "modules": [
+    {
+      "id": "prepositions",
+      "title": "Prepositions: IN / ON / AT",
+      "icon": "📍",
+      "level": "A2–B1",
+      "time": "60–90 min",
+      "desc": "Träna IN/ON/AT med förståelse, fix-the-mistake, bygg meningar, reading och writing.",
+      "rules": [
+        {
+          "heading": "IN",
+          "text": "Countries, cities, years, months, long periods (in Sweden, in 2012, in July)."
+        },
+        {
+          "heading": "ON",
+          "text": "Days and dates (on Monday, on 5th May)."
+        },
+        {
+          "heading": "AT",
+          "text": "Exact time and specific points/places (at 3 o'clock, at the bus stop)."
+        }
+      ],
+      "parts": [
+        {
+          "type": "lesson",
+          "title": "Understand the rule",
+          "content": [
+            "IN = länder/städer/år/månader/längre perioder",
+            "ON = dagar/datum",
+            "AT = exakta tider + specifika punkter/platser",
+            "Tips: tänk IN (inne i), ON (på en dag), AT (en punkt)."
+          ]
+        },
+        {
+          "type": "mc",
+          "title": "Quick check (10 frågor)",
+          "items": [
+            {
+              "q": "I live ___ Sweden.",
+              "opts": [
+                "in",
+                "on",
+                "at"
+              ],
+              "a": 0,
+              "exp": "IN för länder/städer/områden."
+            },
+            {
+              "q": "The meeting is ___ Monday.",
+              "opts": [
+                "in",
+                "on",
+                "at"
+              ],
+              "a": 1,
+              "exp": "ON för dagar och datum."
+            },
+            {
+              "q": "I'll meet you ___ 3 o'clock.",
+              "opts": [
+                "in",
+                "on",
+                "at"
+              ],
+              "a": 2,
+              "exp": "AT för exakta tidpunkter."
+            },
+            {
+              "q": "She was born ___ 1995.",
+              "opts": [
+                "in",
+                "on",
+                "at"
+              ],
+              "a": 0,
+              "exp": "IN för år/månader/säsonger."
+            },
+            {
+              "q": "I'm waiting ___ the bus stop.",
+              "opts": [
+                "in",
+                "on",
+                "at"
+              ],
+              "a": 2,
+              "exp": "AT för specifika platser/punkter."
+            },
+            {
+              "q": "We have English ___ Fridays.",
+              "opts": [
+                "in",
+                "on",
+                "at"
+              ],
+              "a": 1,
+              "exp": "ON Fridays."
+            },
+            {
+              "q": "My birthday is ___ June.",
+              "opts": [
+                "in",
+                "on",
+                "at"
+              ],
+              "a": 0,
+              "exp": "IN June."
+            },
+            {
+              "q": "The train leaves ___ 07:15.",
+              "opts": [
+                "in",
+                "on",
+                "at"
+              ],
+              "a": 2,
+              "exp": "AT 07:15."
+            },
+            {
+              "q": "I usually study ___ the evening.",
+              "opts": [
+                "in",
+                "on",
+                "at"
+              ],
+              "a": 0,
+              "exp": "IN the evening (vanlig fras)."
+            },
+            {
+              "q": "Let's meet ___ the entrance.",
+              "opts": [
+                "in",
+                "on",
+                "at"
+              ],
+              "a": 2,
+              "exp": "AT the entrance."
+            }
+          ]
+        },
+        {
+          "type": "fix",
+          "title": "Fix the mistakes (8 meningar)",
+          "items": [
+            {
+              "bad": "I was born at 2005.",
+              "good": "I was born in 2005.",
+              "why": "IN för år."
+            },
+            {
+              "bad": "The meeting is in Monday.",
+              "good": "The meeting is on Monday.",
+              "why": "ON för dagar."
+            },
+            {
+              "bad": "I'll call you in 8 o'clock.",
+              "good": "I'll call you at 8 o'clock.",
+              "why": "AT för exakt tid."
+            },
+            {
+              "bad": "She lives at Sweden.",
+              "good": "She lives in Sweden.",
+              "why": "IN för länder."
+            },
+            {
+              "bad": "We met in Friday.",
+              "good": "We met on Friday.",
+              "why": "ON för dagar."
+            },
+            {
+              "bad": "He arrived on 2019.",
+              "good": "He arrived in 2019.",
+              "why": "IN för år."
+            },
+            {
+              "bad": "Class starts in 09:00.",
+              "good": "Class starts at 09:00.",
+              "why": "AT för exakt tid."
+            },
+            {
+              "bad": "I'm at home on the evening.",
+              "good": "I'm at home in the evening.",
+              "why": "IN the evening."
+            }
+          ]
+        },
+        {
+          "type": "build",
+          "title": "Build sentences (10)",
+          "items": [
+            {
+              "words": [
+                "I",
+                "will",
+                "be",
+                "home",
+                "at",
+                "3",
+                "o'clock",
+                "."
+              ],
+              "example": "I will be home at 3 o'clock."
+            },
+            {
+              "words": [
+                "She",
+                "was",
+                "born",
+                "in",
+                "1999",
+                "."
+              ],
+              "example": "She was born in 1999."
+            },
+            {
+              "words": [
+                "We",
+                "have",
+                "math",
+                "on",
+                "Tuesday",
+                "."
+              ],
+              "example": "We have math on Tuesday."
+            },
+            {
+              "words": [
+                "They",
+                "live",
+                "in",
+                "Örebro",
+                "."
+              ],
+              "example": "They live in Örebro."
+            },
+            {
+              "words": [
+                "Meet",
+                "me",
+                "at",
+                "the",
+                "door",
+                "."
+              ],
+              "example": "Meet me at the door."
+            },
+            {
+              "words": [
+                "My",
+                "birthday",
+                "is",
+                "in",
+                "August",
+                "."
+              ],
+              "example": "My birthday is in August."
+            },
+            {
+              "words": [
+                "The",
+                "exam",
+                "is",
+                "on",
+                "May",
+                "10th",
+                "."
+              ],
+              "example": "The exam is on May 10th."
+            },
+            {
+              "words": [
+                "The",
+                "bus",
+                "leaves",
+                "at",
+                "07:45",
+                "."
+              ],
+              "example": "The bus leaves at 07:45."
+            },
+            {
+              "words": [
+                "I",
+                "study",
+                "in",
+                "the",
+                "morning",
+                "."
+              ],
+              "example": "I study in the morning."
+            },
+            {
+              "words": [
+                "He",
+                "waits",
+                "at",
+                "the",
+                "bus",
+                "stop",
+                "."
+              ],
+              "example": "He waits at the bus stop."
+            }
+          ]
+        },
+        {
+          "type": "reading",
+          "title": "Mini reading (A2–B1)",
+          "text": "Emma lives in London. She works at a bank near the river. She was born in 1998. On Mondays, she starts work at 8:30. In the evening, she studies English at home. At the weekend, she meets friends in the city.",
+          "questions": [
+            {
+              "q": "Where does Emma live?",
+              "a": "She lives in London.",
+              "hint": "Use 'in' + place."
+            },
+            {
+              "q": "Where does she work?",
+              "a": "She works at a bank.",
+              "hint": "Use 'at' + specific place."
+            },
+            {
+              "q": "When was she born?",
+              "a": "She was born in 1998.",
+              "hint": "Use 'in' + year."
+            },
+            {
+              "q": "What time does she start work on Mondays?",
+              "a": "She starts work at 8:30 on Mondays.",
+              "hint": "Use 'at' for time and 'on' for day."
+            },
+            {
+              "q": "Where does she study in the evening?",
+              "a": "She studies English at home in the evening.",
+              "hint": "Combine 'at' + place and 'in' + time period."
+            }
+          ]
+        },
+        {
+          "type": "writing",
+          "title": "Writing task (30–45 min)",
+          "prompt": "Write 10 sentences about your life. Use:\n• 3 sentences with IN\n• 3 sentences with ON\n• 3 sentences with AT\n• 1 free sentence\n\nTry to write about real things (home, school, hobbies, times, days).",
+          "checklist": [
+            "I used IN correctly (countries/cities/years/months/long periods).",
+            "I used ON correctly (days/dates).",
+            "I used AT correctly (exact times/specific places).",
+            "My sentences have capital letters and full stops."
+          ]
+        },
+        {
+          "type": "reflection",
+          "title": "Reflection (5–10 min)",
+          "qs": [
+            "What was the easiest rule today?",
+            "What is still confusing?",
+            "Write one example sentence for IN, ON and AT."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "swedish-mistakes",
+      "title": "Svenska översättningsfällor",
+      "icon": "🍕",
+      "level": "A2–B1",
+      "time": "60–90 min",
+      "desc": "Sluta översätta ord för ord. Träna vanliga fraser + skriv egna bättre meningar.",
+      "parts": [
+        {
+          "type": "lesson",
+          "title": "Mini-lesson: Don’t translate word-for-word",
+          "content": [
+            "Många svenska fraser låter konstiga på engelska om du översätter direkt.",
+            "Lösning: lär dig EN naturlig engelsk fras (chunk) i taget.",
+            "Regel: välj hellre en enkel naturlig mening än en avancerad direktöversättning."
+          ]
+        },
+        {
+          "type": "mc",
+          "title": "Quick check (10 frågor)",
+          "items": [
+            {
+              "q": "Hur säger man 'Jag ska gå och lägga mig' bäst?",
+              "opts": [
+                "I will go and lay me",
+                "I'm going to bed",
+                "I will go and put myself"
+              ],
+              "a": 1,
+              "exp": "'I'm going to bed' är naturligt."
+            },
+            {
+              "q": "Bäst engelska för 'Hur mår du?'",
+              "opts": [
+                "How is it with you?",
+                "How are you?",
+                "How is with you?"
+              ],
+              "a": 1,
+              "exp": "'How are you?' är standard."
+            },
+            {
+              "q": "'Jag fryser'",
+              "opts": [
+                "I'm cold",
+                "I'm cold on me",
+                "I'm a cold person"
+              ],
+              "a": 0,
+              "exp": "'I'm cold' = jag fryser."
+            },
+            {
+              "q": "'Jag ska till stan'",
+              "opts": [
+                "I'm going to the city",
+                "I'm going into town",
+                "I'm going to the town"
+              ],
+              "a": 1,
+              "exp": "'into town'/'downtown' är bäst."
+            },
+            {
+              "q": "'Jag är 15 år'",
+              "opts": [
+                "I have 15 years",
+                "I am 15 years old",
+                "I am 15 years"
+              ],
+              "a": 1,
+              "exp": "Engelska använder 'am' + 'years old'."
+            },
+            {
+              "q": "'Kan jag låna din penna?'",
+              "opts": [
+                "Can I borrow your pen?",
+                "Can I lend your pen?",
+                "Can I loan you your pen?"
+              ],
+              "a": 0,
+              "exp": "Borrow = låna (ta). Lend = låna ut."
+            },
+            {
+              "q": "'Jag ska baka småkakor'",
+              "opts": [
+                "I will bake cookies",
+                "I will bake cakes",
+                "I will cook cookies"
+              ],
+              "a": 0,
+              "exp": "Cookies = småkakor."
+            },
+            {
+              "q": "'Jag ser fram emot det'",
+              "opts": [
+                "I'm looking forward to it",
+                "I look forward that",
+                "I'm seeing forward to it"
+              ],
+              "a": 0,
+              "exp": "'look forward to' + noun/ing."
+            },
+            {
+              "q": "'Jag gillar musik'",
+              "opts": [
+                "I like music",
+                "I like to music",
+                "I like on music"
+              ],
+              "a": 0,
+              "exp": "Ingen preposition behövs."
+            },
+            {
+              "q": "'Jag ska ta en dusch'",
+              "opts": [
+                "I will take a shower",
+                "I will do a shower",
+                "I will make a shower"
+              ],
+              "a": 0,
+              "exp": "'take a shower' är naturligt."
+            }
+          ]
+        },
+        {
+          "type": "fix",
+          "title": "Fix the sentence (8)",
+          "items": [
+            {
+              "bad": "How is it with you?",
+              "good": "How are you?",
+              "why": "Vanlig fras."
+            },
+            {
+              "bad": "I have 16 years.",
+              "good": "I am 16 years old.",
+              "why": "Ålder uttrycks med 'am'."
+            },
+            {
+              "bad": "Can I lend your phone?",
+              "good": "Can I borrow your phone?",
+              "why": "Borrow = låna (ta)."
+            },
+            {
+              "bad": "I'm looking forward that.",
+              "good": "I'm looking forward to it.",
+              "why": "to + noun/pronoun."
+            },
+            {
+              "bad": "I like to music.",
+              "good": "I like music.",
+              "why": "Ingen preposition."
+            },
+            {
+              "bad": "I will go and lay me.",
+              "good": "I'm going to bed.",
+              "why": "Naturlig fras."
+            },
+            {
+              "bad": "I'm cold on me.",
+              "good": "I'm cold.",
+              "why": "Jag fryser."
+            },
+            {
+              "bad": "I'm going to the town.",
+              "good": "I'm going into town.",
+              "why": "stan = into town/downtown."
+            }
+          ]
+        },
+        {
+          "type": "build",
+          "title": "Upgrade your Swedish-English (10)",
+          "items": [
+            {
+              "words": [
+                "Jag",
+                "fryser",
+                "."
+              ],
+              "example": "I'm cold."
+            },
+            {
+              "words": [
+                "Hur",
+                "mår",
+                "du",
+                "?"
+              ],
+              "example": "How are you?"
+            },
+            {
+              "words": [
+                "Jag",
+                "ser",
+                "fram",
+                "emot",
+                "det",
+                "."
+              ],
+              "example": "I'm looking forward to it."
+            },
+            {
+              "words": [
+                "Jag",
+                "ska",
+                "ta",
+                "en",
+                "dusch",
+                "."
+              ],
+              "example": "I'm going to take a shower."
+            },
+            {
+              "words": [
+                "Jag",
+                "ska",
+                "till",
+                "stan",
+                "."
+              ],
+              "example": "I'm going into town."
+            },
+            {
+              "words": [
+                "Kan",
+                "jag",
+                "låna",
+                "din",
+                "penna",
+                "?"
+              ],
+              "example": "Can I borrow your pen?"
+            },
+            {
+              "words": [
+                "Jag",
+                "är",
+                "15",
+                "år",
+                "."
+              ],
+              "example": "I'm 15 years old."
+            },
+            {
+              "words": [
+                "Jag",
+                "gillar",
+                "musik",
+                "."
+              ],
+              "example": "I like music."
+            },
+            {
+              "words": [
+                "Jag",
+                "ska",
+                "baka",
+                "småkakor",
+                "."
+              ],
+              "example": "I'm going to bake cookies."
+            },
+            {
+              "words": [
+                "Jag",
+                "ska",
+                "gå",
+                "och",
+                "lägga",
+                "mig",
+                "."
+              ],
+              "example": "I'm going to bed."
+            }
+          ]
+        },
+        {
+          "type": "reading",
+          "title": "Mini reading (chunks)",
+          "text": "Ali is tired today. He says: 'How is it with you?' His friend laughs and answers: 'I'm good! How are you?' Ali learns a new rule: don’t translate. In the evening, he is cold, so he says: 'I'm cold.' Then he goes to bed early.",
+          "questions": [
+            {
+              "q": "What is the correct question to ask a friend?",
+              "a": "How are you?",
+              "hint": "Common chunk."
+            },
+            {
+              "q": "What does Ali learn?",
+              "a": "He learns not to translate word-for-word.",
+              "hint": "Look at the rule."
+            },
+            {
+              "q": "What does he say when he is cold?",
+              "a": "I'm cold.",
+              "hint": "Short and simple."
+            },
+            {
+              "q": "When does he go to bed?",
+              "a": "He goes to bed in the evening / early.",
+              "hint": "Use time words."
+            },
+            {
+              "q": "Write 2 chunks from the text.",
+              "a": "Example: How are you? / I'm cold.",
+              "hint": "Copy two useful phrases."
+            }
+          ]
+        },
+        {
+          "type": "writing",
+          "title": "Writing task (30–45 min)",
+          "prompt": "Write a short story (8–12 sentences) about a day where someone makes 3 Swedish-English mistakes and then fixes them. Use at least 3 chunks from today.\n\nChecklist:\n• 8–12 sentences\n• 3 mistakes + corrections\n• 3 chunks used correctly",
+          "checklist": [
+            "I wrote 8–12 sentences.",
+            "I used 3 chunks correctly.",
+            "I showed 3 mistakes and fixed them.",
+            "My story has capital letters and full stops."
+          ]
+        },
+        {
+          "type": "reflection",
+          "title": "Reflection",
+          "qs": [
+            "Which chunk will you remember?",
+            "What mistake do you make most often?",
+            "Write your personal 'rule' for avoiding translation."
+          ]
+        }
+      ]
+    }
+  ],
+  "version": "1.0.0"
+}
