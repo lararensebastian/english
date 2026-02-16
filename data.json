@@ -1,6 +1,1682 @@
 {
   "modules": [
     {
+      "id": "placement",
+      "title": "Kartläggning (A1.1–C1)",
+      "icon": "🧭",
+      "level": "A1.1–C1",
+      "time": "~60 min",
+      "desc": "Adaptivt test som anpassar svårighet. Du får delnivå (A1.1, A1.2, A2.1 …) och en kort rapport.",
+      "parts": [
+        {
+          "type": "placement",
+          "title": "Adaptivt nivåtest (ca 60 min)",
+          "config": {
+            "levels": [
+              "A1.1",
+              "A1.2",
+              "A2.1",
+              "A2.2",
+              "B1.1",
+              "B1.2",
+              "B2",
+              "C1"
+            ],
+            "timeLimitMinutes": 60,
+            "targets": {
+              "grammar": {
+                "min": 18,
+                "max": 26,
+                "startLevel": "A2.1"
+              },
+              "vocab": {
+                "min": 18,
+                "max": 26,
+                "startLevel": "A2.1"
+              },
+              "reading": {
+                "minTexts": 2,
+                "maxTexts": 4,
+                "startLevel": "A2.1"
+              }
+            },
+            "rules": {
+              "upAfter": 2,
+              "downAfter": 2,
+              "stabilityWindow": 6,
+              "maxJump": 1
+            },
+            "weights": {
+              "grammar": 0.3,
+              "vocab": 0.2,
+              "reading": 0.25,
+              "writing": 0.25
+            }
+          },
+          "bank": {
+            "grammar": [
+              {
+                "q": "I ___ football on Saturdays.",
+                "opts": [
+                  "play",
+                  "plays",
+                  "played"
+                ],
+                "a": 0,
+                "exp": "Present simple: he/she/it + -s. Others: base form.",
+                "level": "A1.1",
+                "category": "grammar"
+              },
+              {
+                "q": "I ___ football on Saturdays.",
+                "opts": [
+                  "play",
+                  "plays",
+                  "played"
+                ],
+                "a": 0,
+                "exp": "Present simple: he/she/it + -s. Others: base form.",
+                "level": "A1.1",
+                "category": "grammar"
+              },
+              {
+                "q": "I ___ football on Saturdays.",
+                "opts": [
+                  "play",
+                  "plays",
+                  "played"
+                ],
+                "a": 0,
+                "exp": "Present simple: he/she/it + -s. Others: base form.",
+                "level": "A1.1",
+                "category": "grammar"
+              },
+              {
+                "q": "I ___ football on Saturdays.",
+                "opts": [
+                  "play",
+                  "plays",
+                  "played"
+                ],
+                "a": 0,
+                "exp": "Present simple: he/she/it + -s. Others: base form.",
+                "level": "A1.1",
+                "category": "grammar"
+              },
+              {
+                "q": "I ___ football on Saturdays.",
+                "opts": [
+                  "play",
+                  "plays",
+                  "played"
+                ],
+                "a": 0,
+                "exp": "Present simple: he/she/it + -s. Others: base form.",
+                "level": "A1.1",
+                "category": "grammar"
+              },
+              {
+                "q": "You ___ football on Saturdays.",
+                "opts": [
+                  "play",
+                  "plays",
+                  "played"
+                ],
+                "a": 0,
+                "exp": "Present simple: he/she/it + -s. Others: base form.",
+                "level": "A1.1",
+                "category": "grammar"
+              },
+              {
+                "q": "You ___ football on Saturdays.",
+                "opts": [
+                  "play",
+                  "plays",
+                  "played"
+                ],
+                "a": 0,
+                "exp": "Present simple: he/she/it + -s. Others: base form.",
+                "level": "A1.1",
+                "category": "grammar"
+              },
+              {
+                "q": "You ___ football on Saturdays.",
+                "opts": [
+                  "play",
+                  "plays",
+                  "played"
+                ],
+                "a": 0,
+                "exp": "Present simple: he/she/it + -s. Others: base form.",
+                "level": "A1.1",
+                "category": "grammar"
+              },
+              {
+                "q": "You ___ football on Saturdays.",
+                "opts": [
+                  "play",
+                  "plays",
+                  "played"
+                ],
+                "a": 0,
+                "exp": "Present simple: he/she/it + -s. Others: base form.",
+                "level": "A1.1",
+                "category": "grammar"
+              },
+              {
+                "q": "You ___ football on Saturdays.",
+                "opts": [
+                  "play",
+                  "plays",
+                  "played"
+                ],
+                "a": 0,
+                "exp": "Present simple: he/she/it + -s. Others: base form.",
+                "level": "A1.1",
+                "category": "grammar"
+              },
+              {
+                "q": "He ___ football on Saturdays.",
+                "opts": [
+                  "play",
+                  "plays",
+                  "played"
+                ],
+                "a": 1,
+                "exp": "Present simple: he/she/it + -s. Others: base form.",
+                "level": "A1.1",
+                "category": "grammar"
+              },
+              {
+                "q": "He ___ football on Saturdays.",
+                "opts": [
+                  "play",
+                  "plays",
+                  "played"
+                ],
+                "a": 1,
+                "exp": "Present simple: he/she/it + -s. Others: base form.",
+                "level": "A1.1",
+                "category": "grammar"
+              },
+              {
+                "q": "He ___ football on Saturdays.",
+                "opts": [
+                  "play",
+                  "plays",
+                  "played"
+                ],
+                "a": 1,
+                "exp": "Present simple: he/she/it + -s. Others: base form.",
+                "level": "A1.1",
+                "category": "grammar"
+              },
+              {
+                "q": "He ___ football on Saturdays.",
+                "opts": [
+                  "play",
+                  "plays",
+                  "played"
+                ],
+                "a": 1,
+                "exp": "Present simple: he/she/it + -s. Others: base form.",
+                "level": "A1.1",
+                "category": "grammar"
+              },
+              {
+                "q": "He ___ football on Saturdays.",
+                "opts": [
+                  "play",
+                  "plays",
+                  "played"
+                ],
+                "a": 1,
+                "exp": "Present simple: he/she/it + -s. Others: base form.",
+                "level": "A1.1",
+                "category": "grammar"
+              },
+              {
+                "q": "She ___ football on Saturdays.",
+                "opts": [
+                  "play",
+                  "plays",
+                  "played"
+                ],
+                "a": 1,
+                "exp": "Present simple: he/she/it + -s. Others: base form.",
+                "level": "A1.1",
+                "category": "grammar"
+              },
+              {
+                "q": "She ___ football on Saturdays.",
+                "opts": [
+                  "play",
+                  "plays",
+                  "played"
+                ],
+                "a": 1,
+                "exp": "Present simple: he/she/it + -s. Others: base form.",
+                "level": "A1.1",
+                "category": "grammar"
+              },
+              {
+                "q": "She ___ football on Saturdays.",
+                "opts": [
+                  "play",
+                  "plays",
+                  "played"
+                ],
+                "a": 1,
+                "exp": "Present simple: he/she/it + -s. Others: base form.",
+                "level": "A1.1",
+                "category": "grammar"
+              },
+              {
+                "q": "She ___ football on Saturdays.",
+                "opts": [
+                  "play",
+                  "plays",
+                  "played"
+                ],
+                "a": 1,
+                "exp": "Present simple: he/she/it + -s. Others: base form.",
+                "level": "A1.1",
+                "category": "grammar"
+              },
+              {
+                "q": "She ___ football on Saturdays.",
+                "opts": [
+                  "play",
+                  "plays",
+                  "played"
+                ],
+                "a": 1,
+                "exp": "Present simple: he/she/it + -s. Others: base form.",
+                "level": "A1.1",
+                "category": "grammar"
+              },
+              {
+                "q": "We ___ football on Saturdays.",
+                "opts": [
+                  "play",
+                  "plays",
+                  "played"
+                ],
+                "a": 0,
+                "exp": "Present simple: he/she/it + -s. Others: base form.",
+                "level": "A1.1",
+                "category": "grammar"
+              },
+              {
+                "q": "We ___ football on Saturdays.",
+                "opts": [
+                  "play",
+                  "plays",
+                  "played"
+                ],
+                "a": 0,
+                "exp": "Present simple: he/she/it + -s. Others: base form.",
+                "level": "A1.1",
+                "category": "grammar"
+              },
+              {
+                "q": "We ___ football on Saturdays.",
+                "opts": [
+                  "play",
+                  "plays",
+                  "played"
+                ],
+                "a": 0,
+                "exp": "Present simple: he/she/it + -s. Others: base form.",
+                "level": "A1.1",
+                "category": "grammar"
+              },
+              {
+                "q": "We ___ football on Saturdays.",
+                "opts": [
+                  "play",
+                  "plays",
+                  "played"
+                ],
+                "a": 0,
+                "exp": "Present simple: he/she/it + -s. Others: base form.",
+                "level": "A1.1",
+                "category": "grammar"
+              },
+              {
+                "q": "We ___ football on Saturdays.",
+                "opts": [
+                  "play",
+                  "plays",
+                  "played"
+                ],
+                "a": 0,
+                "exp": "Present simple: he/she/it + -s. Others: base form.",
+                "level": "A1.1",
+                "category": "grammar"
+              },
+              {
+                "q": "They ___ football on Saturdays.",
+                "opts": [
+                  "play",
+                  "plays",
+                  "played"
+                ],
+                "a": 0,
+                "exp": "Present simple: he/she/it + -s. Others: base form.",
+                "level": "A1.1",
+                "category": "grammar"
+              },
+              {
+                "q": "They ___ football on Saturdays.",
+                "opts": [
+                  "play",
+                  "plays",
+                  "played"
+                ],
+                "a": 0,
+                "exp": "Present simple: he/she/it + -s. Others: base form.",
+                "level": "A1.1",
+                "category": "grammar"
+              },
+              {
+                "q": "They ___ football on Saturdays.",
+                "opts": [
+                  "play",
+                  "plays",
+                  "played"
+                ],
+                "a": 0,
+                "exp": "Present simple: he/she/it + -s. Others: base form.",
+                "level": "A1.1",
+                "category": "grammar"
+              },
+              {
+                "q": "They ___ football on Saturdays.",
+                "opts": [
+                  "play",
+                  "plays",
+                  "played"
+                ],
+                "a": 0,
+                "exp": "Present simple: he/she/it + -s. Others: base form.",
+                "level": "A1.1",
+                "category": "grammar"
+              },
+              {
+                "q": "They ___ football on Saturdays.",
+                "opts": [
+                  "play",
+                  "plays",
+                  "played"
+                ],
+                "a": 0,
+                "exp": "Present simple: he/she/it + -s. Others: base form.",
+                "level": "A1.1",
+                "category": "grammar"
+              },
+              {
+                "q": "I ___ 13 years old.",
+                "opts": [
+                  "am",
+                  "is",
+                  "are"
+                ],
+                "a": 0,
+                "exp": "Use 'am' with I.",
+                "level": "A1.1",
+                "category": "grammar"
+              },
+              {
+                "q": "She ___ 13 years old.",
+                "opts": [
+                  "am",
+                  "is",
+                  "are"
+                ],
+                "a": 1,
+                "exp": "Use 'is' with she/he/it.",
+                "level": "A1.1",
+                "category": "grammar"
+              },
+              {
+                "q": "I ___ 15 years old.",
+                "opts": [
+                  "am",
+                  "is",
+                  "are"
+                ],
+                "a": 0,
+                "exp": "Use 'am' with I.",
+                "level": "A1.1",
+                "category": "grammar"
+              },
+              {
+                "q": "She ___ 15 years old.",
+                "opts": [
+                  "am",
+                  "is",
+                  "are"
+                ],
+                "a": 1,
+                "exp": "Use 'is' with she/he/it.",
+                "level": "A1.1",
+                "category": "grammar"
+              },
+              {
+                "q": "I ___ 17 years old.",
+                "opts": [
+                  "am",
+                  "is",
+                  "are"
+                ],
+                "a": 0,
+                "exp": "Use 'am' with I.",
+                "level": "A1.1",
+                "category": "grammar"
+              },
+              {
+                "q": "She ___ 17 years old.",
+                "opts": [
+                  "am",
+                  "is",
+                  "are"
+                ],
+                "a": 1,
+                "exp": "Use 'is' with she/he/it.",
+                "level": "A1.1",
+                "category": "grammar"
+              },
+              {
+                "q": "There ___ a book on the table.",
+                "opts": [
+                  "is",
+                  "are",
+                  "be"
+                ],
+                "a": 0,
+                "exp": "Singular: there is.",
+                "level": "A1.2",
+                "category": "grammar"
+              },
+              {
+                "q": "There ___ two books in the room.",
+                "opts": [
+                  "is",
+                  "are",
+                  "am"
+                ],
+                "a": 1,
+                "exp": "Plural: there are.",
+                "level": "A1.2",
+                "category": "grammar"
+              },
+              {
+                "q": "There ___ a student on the table.",
+                "opts": [
+                  "is",
+                  "are",
+                  "be"
+                ],
+                "a": 0,
+                "exp": "Singular: there is.",
+                "level": "A1.2",
+                "category": "grammar"
+              },
+              {
+                "q": "There ___ two students in the room.",
+                "opts": [
+                  "is",
+                  "are",
+                  "am"
+                ],
+                "a": 1,
+                "exp": "Plural: there are.",
+                "level": "A1.2",
+                "category": "grammar"
+              },
+              {
+                "q": "There ___ a chair on the table.",
+                "opts": [
+                  "is",
+                  "are",
+                  "be"
+                ],
+                "a": 0,
+                "exp": "Singular: there is.",
+                "level": "A1.2",
+                "category": "grammar"
+              },
+              {
+                "q": "There ___ two chairs in the room.",
+                "opts": [
+                  "is",
+                  "are",
+                  "am"
+                ],
+                "a": 1,
+                "exp": "Plural: there are.",
+                "level": "A1.2",
+                "category": "grammar"
+              },
+              {
+                "q": "Yesterday, I ___ to school.",
+                "opts": [
+                  "walk",
+                  "walked",
+                  "was walk"
+                ],
+                "a": 1,
+                "exp": "Past simple (regular): verb + -ed.",
+                "level": "A1.2",
+                "category": "grammar"
+              },
+              {
+                "q": "Yesterday, I ___ to school.",
+                "opts": [
+                  "talk",
+                  "talked",
+                  "was talk"
+                ],
+                "a": 1,
+                "exp": "Past simple (regular): verb + -ed.",
+                "level": "A1.2",
+                "category": "grammar"
+              },
+              {
+                "q": "Yesterday, I ___ to school.",
+                "opts": [
+                  "watch",
+                  "watched",
+                  "was watch"
+                ],
+                "a": 1,
+                "exp": "Past simple (regular): verb + -ed.",
+                "level": "A1.2",
+                "category": "grammar"
+              },
+              {
+                "q": "Yesterday, I ___ to school.",
+                "opts": [
+                  "play",
+                  "played",
+                  "was play"
+                ],
+                "a": 1,
+                "exp": "Past simple (regular): verb + -ed.",
+                "level": "A1.2",
+                "category": "grammar"
+              },
+              {
+                "q": "I ___ swim.",
+                "opts": [
+                  "can",
+                  "am",
+                  "do"
+                ],
+                "a": 0,
+                "exp": "Use 'can' for ability.",
+                "level": "A1.2",
+                "category": "grammar"
+              },
+              {
+                "q": "I have lived here ___ 2019.",
+                "opts": [
+                  "for",
+                  "since",
+                  "during"
+                ],
+                "a": 1,
+                "exp": "Since + starting point.",
+                "level": "A2.1",
+                "category": "grammar"
+              },
+              {
+                "q": "I have lived here ___ two years.",
+                "opts": [
+                  "for",
+                  "since",
+                  "during"
+                ],
+                "a": 0,
+                "exp": "For + period of time.",
+                "level": "A2.1",
+                "category": "grammar"
+              },
+              {
+                "q": "This test is ___ than the last one.",
+                "opts": [
+                  "easy",
+                  "easier",
+                  "easiest"
+                ],
+                "a": 1,
+                "exp": "Comparative: adjective + -er.",
+                "level": "A2.1",
+                "category": "grammar"
+              },
+              {
+                "q": "Do you have ___ homework today?",
+                "opts": [
+                  "some",
+                  "any",
+                  "much"
+                ],
+                "a": 1,
+                "exp": "Any in questions/negatives.",
+                "level": "A2.1",
+                "category": "grammar"
+              },
+              {
+                "q": "I didn't ___ TV yesterday.",
+                "opts": [
+                  "watched",
+                  "watch",
+                  "watching"
+                ],
+                "a": 1,
+                "exp": "After did/didn't: base form.",
+                "level": "A2.1",
+                "category": "grammar"
+              },
+              {
+                "q": "I ___ dinner when you called.",
+                "opts": [
+                  "was cooking",
+                  "cooked",
+                  "am cooking"
+                ],
+                "a": 0,
+                "exp": "Past continuous for ongoing past action.",
+                "level": "A2.2",
+                "category": "grammar"
+              },
+              {
+                "q": "I ___ the movie last night.",
+                "opts": [
+                  "have seen",
+                  "saw",
+                  "see"
+                ],
+                "a": 1,
+                "exp": "Past simple with finished time (last night).",
+                "level": "A2.2",
+                "category": "grammar"
+              },
+              {
+                "q": "I ___ that film before.",
+                "opts": [
+                  "saw",
+                  "have seen",
+                  "see"
+                ],
+                "a": 1,
+                "exp": "Present perfect for life experience.",
+                "level": "A2.2",
+                "category": "grammar"
+              },
+              {
+                "q": "If it rains, we ___ inside.",
+                "opts": [
+                  "stay",
+                  "will stay",
+                  "stayed"
+                ],
+                "a": 1,
+                "exp": "First conditional: if + present, will + verb.",
+                "level": "A2.2",
+                "category": "grammar"
+              },
+              {
+                "q": "That's the boy ___ lives next door.",
+                "opts": [
+                  "who",
+                  "where",
+                  "which"
+                ],
+                "a": 0,
+                "exp": "Who for people.",
+                "level": "B1.1",
+                "category": "grammar"
+              },
+              {
+                "q": "You ___ see a doctor.",
+                "opts": [
+                  "should",
+                  "mustn't",
+                  "can't"
+                ],
+                "a": 0,
+                "exp": "Should = advice.",
+                "level": "B1.1",
+                "category": "grammar"
+              },
+              {
+                "q": "I enjoy ___ English.",
+                "opts": [
+                  "study",
+                  "to study",
+                  "studying"
+                ],
+                "a": 2,
+                "exp": "Enjoy + -ing.",
+                "level": "B1.1",
+                "category": "grammar"
+              },
+              {
+                "q": "I decided ___ earlier.",
+                "opts": [
+                  "leave",
+                  "to leave",
+                  "leaving"
+                ],
+                "a": 1,
+                "exp": "Decide + to + verb.",
+                "level": "B1.1",
+                "category": "grammar"
+              },
+              {
+                "q": "If I ___ more time, I would travel.",
+                "opts": [
+                  "have",
+                  "had",
+                  "will have"
+                ],
+                "a": 1,
+                "exp": "Second conditional: if + past, would + verb.",
+                "level": "B1.2",
+                "category": "grammar"
+              },
+              {
+                "q": "The window ___ yesterday.",
+                "opts": [
+                  "broke",
+                  "was broken",
+                  "is breaking"
+                ],
+                "a": 1,
+                "exp": "Passive: was/were + past participle.",
+                "level": "B1.2",
+                "category": "grammar"
+              },
+              {
+                "q": "He said he ___ tired.",
+                "opts": [
+                  "is",
+                  "was",
+                  "were"
+                ],
+                "a": 1,
+                "exp": "Reported speech often backshifts: is -> was.",
+                "level": "B1.2",
+                "category": "grammar"
+              },
+              {
+                "q": "You ___ have told me earlier!",
+                "opts": [
+                  "should",
+                  "shouldn't",
+                  "should have"
+                ],
+                "a": 2,
+                "exp": "Should have + V3 = criticism about past.",
+                "level": "B2",
+                "category": "grammar"
+              },
+              {
+                "q": "Hardly ___ I arrived when it started raining.",
+                "opts": [
+                  "had",
+                  "have",
+                  "has"
+                ],
+                "a": 0,
+                "exp": "Inversion: Hardly had I...",
+                "level": "B2",
+                "category": "grammar"
+              },
+              {
+                "q": "Not only ___ he finish on time, but he also helped others.",
+                "opts": [
+                  "did",
+                  "do",
+                  "does"
+                ],
+                "a": 0,
+                "exp": "Inversion after 'Not only'.",
+                "level": "C1",
+                "category": "grammar"
+              },
+              {
+                "q": "She speaks as if she ___ everything.",
+                "opts": [
+                  "knows",
+                  "knew",
+                  "known"
+                ],
+                "a": 1,
+                "exp": "As if + past for unreal present.",
+                "level": "C1",
+                "category": "grammar"
+              },
+              {
+                "q": "We have English ___ Monday.",
+                "opts": [
+                  "in",
+                  "on",
+                  "at"
+                ],
+                "a": 1,
+                "exp": "ON for days.",
+                "level": "A2.1",
+                "category": "grammar"
+              },
+              {
+                "q": "We have English ___ Tuesday.",
+                "opts": [
+                  "in",
+                  "on",
+                  "at"
+                ],
+                "a": 1,
+                "exp": "ON for days.",
+                "level": "A2.1",
+                "category": "grammar"
+              },
+              {
+                "q": "We have English ___ Wednesday.",
+                "opts": [
+                  "in",
+                  "on",
+                  "at"
+                ],
+                "a": 1,
+                "exp": "ON for days.",
+                "level": "A2.1",
+                "category": "grammar"
+              },
+              {
+                "q": "We have English ___ Thursday.",
+                "opts": [
+                  "in",
+                  "on",
+                  "at"
+                ],
+                "a": 1,
+                "exp": "ON for days.",
+                "level": "A2.1",
+                "category": "grammar"
+              },
+              {
+                "q": "We have English ___ Friday.",
+                "opts": [
+                  "in",
+                  "on",
+                  "at"
+                ],
+                "a": 1,
+                "exp": "ON for days.",
+                "level": "A2.1",
+                "category": "grammar"
+              },
+              {
+                "q": "My birthday is ___ January.",
+                "opts": [
+                  "in",
+                  "on",
+                  "at"
+                ],
+                "a": 0,
+                "exp": "IN for months.",
+                "level": "A2.1",
+                "category": "grammar"
+              },
+              {
+                "q": "My birthday is ___ March.",
+                "opts": [
+                  "in",
+                  "on",
+                  "at"
+                ],
+                "a": 0,
+                "exp": "IN for months.",
+                "level": "A2.1",
+                "category": "grammar"
+              },
+              {
+                "q": "My birthday is ___ June.",
+                "opts": [
+                  "in",
+                  "on",
+                  "at"
+                ],
+                "a": 0,
+                "exp": "IN for months.",
+                "level": "A2.1",
+                "category": "grammar"
+              },
+              {
+                "q": "My birthday is ___ August.",
+                "opts": [
+                  "in",
+                  "on",
+                  "at"
+                ],
+                "a": 0,
+                "exp": "IN for months.",
+                "level": "A2.1",
+                "category": "grammar"
+              },
+              {
+                "q": "My birthday is ___ December.",
+                "opts": [
+                  "in",
+                  "on",
+                  "at"
+                ],
+                "a": 0,
+                "exp": "IN for months.",
+                "level": "A2.1",
+                "category": "grammar"
+              }
+            ],
+            "vocab": [
+              {
+                "q": "What does 'apple' mean?",
+                "opts": [
+                  "a fruit",
+                  "a sport",
+                  "a place"
+                ],
+                "a": 0,
+                "exp": "Basic vocabulary.",
+                "level": "A1.1",
+                "category": "vocab"
+              },
+              {
+                "q": "What does 'teacher' mean?",
+                "opts": [
+                  "a person at school",
+                  "a sport",
+                  "a place"
+                ],
+                "a": 0,
+                "exp": "Basic vocabulary.",
+                "level": "A1.1",
+                "category": "vocab"
+              },
+              {
+                "q": "What does 'bus' mean?",
+                "opts": [
+                  "a vehicle",
+                  "a sport",
+                  "a place"
+                ],
+                "a": 0,
+                "exp": "Basic vocabulary.",
+                "level": "A1.1",
+                "category": "vocab"
+              },
+              {
+                "q": "What does 'cold' mean?",
+                "opts": [
+                  "not warm",
+                  "a sport",
+                  "a place"
+                ],
+                "a": 0,
+                "exp": "Basic vocabulary.",
+                "level": "A1.1",
+                "category": "vocab"
+              },
+              {
+                "q": "What does 'hungry' mean?",
+                "opts": [
+                  "want food",
+                  "a sport",
+                  "a place"
+                ],
+                "a": 0,
+                "exp": "Basic vocabulary.",
+                "level": "A1.1",
+                "category": "vocab"
+              },
+              {
+                "q": "Choose the best meaning of 'borrow':",
+                "opts": [
+                  "take and give back",
+                  "right now",
+                  "for free"
+                ],
+                "a": 0,
+                "exp": "Common word meaning.",
+                "level": "A2.1",
+                "category": "vocab"
+              },
+              {
+                "q": "Choose the best meaning of 'lend':",
+                "opts": [
+                  "give for a short time",
+                  "right now",
+                  "for free"
+                ],
+                "a": 0,
+                "exp": "Common word meaning.",
+                "level": "A2.1",
+                "category": "vocab"
+              },
+              {
+                "q": "Choose the best meaning of 'actually':",
+                "opts": [
+                  "in fact",
+                  "right now",
+                  "for free"
+                ],
+                "a": 0,
+                "exp": "Common word meaning.",
+                "level": "A2.1",
+                "category": "vocab"
+              },
+              {
+                "q": "Choose the best meaning of 'eventually':",
+                "opts": [
+                  "in the end",
+                  "right now",
+                  "for free"
+                ],
+                "a": 0,
+                "exp": "Common word meaning.",
+                "level": "A2.1",
+                "category": "vocab"
+              },
+              {
+                "q": "'give up' means:",
+                "opts": [
+                  "stop trying",
+                  "run quickly",
+                  "buy something"
+                ],
+                "a": 0,
+                "exp": "Common phrasal verb.",
+                "level": "B1.1",
+                "category": "vocab"
+              },
+              {
+                "q": "'look after' means:",
+                "opts": [
+                  "take care of",
+                  "run quickly",
+                  "buy something"
+                ],
+                "a": 0,
+                "exp": "Common phrasal verb.",
+                "level": "B1.1",
+                "category": "vocab"
+              },
+              {
+                "q": "'find out' means:",
+                "opts": [
+                  "discover",
+                  "run quickly",
+                  "buy something"
+                ],
+                "a": 0,
+                "exp": "Common phrasal verb.",
+                "level": "B1.1",
+                "category": "vocab"
+              },
+              {
+                "q": "'turn down' means:",
+                "opts": [
+                  "رفض/decline (say no)",
+                  "run quickly",
+                  "buy something"
+                ],
+                "a": 0,
+                "exp": "Common phrasal verb.",
+                "level": "B1.1",
+                "category": "vocab"
+              },
+              {
+                "q": "Best synonym for 'increase':",
+                "opts": [
+                  "go up",
+                  "sleep",
+                  "danger"
+                ],
+                "a": 0,
+                "exp": "Synonym knowledge.",
+                "level": "B1.2",
+                "category": "vocab"
+              },
+              {
+                "q": "Best synonym for 'reduce':",
+                "opts": [
+                  "make smaller",
+                  "sleep",
+                  "danger"
+                ],
+                "a": 0,
+                "exp": "Synonym knowledge.",
+                "level": "B1.2",
+                "category": "vocab"
+              },
+              {
+                "q": "Best synonym for 'solution':",
+                "opts": [
+                  "answer",
+                  "sleep",
+                  "danger"
+                ],
+                "a": 0,
+                "exp": "Synonym knowledge.",
+                "level": "B1.2",
+                "category": "vocab"
+              },
+              {
+                "q": "Best synonym for 'important':",
+                "opts": [
+                  "significant",
+                  "sleep",
+                  "danger"
+                ],
+                "a": 0,
+                "exp": "Synonym knowledge.",
+                "level": "B1.2",
+                "category": "vocab"
+              },
+              {
+                "q": "Meaning of 'meticulous':",
+                "opts": [
+                  "very careful",
+                  "very noisy",
+                  "very cheap"
+                ],
+                "a": 0,
+                "exp": "Advanced vocabulary.",
+                "level": "C1",
+                "category": "vocab"
+              },
+              {
+                "q": "Meaning of 'ambiguous':",
+                "opts": [
+                  "unclear",
+                  "very noisy",
+                  "very cheap"
+                ],
+                "a": 0,
+                "exp": "Advanced vocabulary.",
+                "level": "C1",
+                "category": "vocab"
+              },
+              {
+                "q": "Meaning of 'ubiquitous':",
+                "opts": [
+                  "everywhere",
+                  "very noisy",
+                  "very cheap"
+                ],
+                "a": 0,
+                "exp": "Advanced vocabulary.",
+                "level": "C1",
+                "category": "vocab"
+              },
+              {
+                "q": "Meaning of 'mitigate':",
+                "opts": [
+                  "make less severe",
+                  "very noisy",
+                  "very cheap"
+                ],
+                "a": 0,
+                "exp": "Advanced vocabulary.",
+                "level": "C1",
+                "category": "vocab"
+              },
+              {
+                "q": "'tiny' means:",
+                "opts": [
+                  "very small",
+                  "very loud",
+                  "very old"
+                ],
+                "a": 0,
+                "exp": "Basic adjective.",
+                "level": "A1.2",
+                "category": "vocab"
+              },
+              {
+                "q": "'quick' means:",
+                "opts": [
+                  "fast",
+                  "very loud",
+                  "very old"
+                ],
+                "a": 0,
+                "exp": "Basic adjective.",
+                "level": "A1.2",
+                "category": "vocab"
+              },
+              {
+                "q": "'start' means:",
+                "opts": [
+                  "begin",
+                  "very loud",
+                  "very old"
+                ],
+                "a": 0,
+                "exp": "Basic adjective.",
+                "level": "A1.2",
+                "category": "vocab"
+              },
+              {
+                "q": "'finish' means:",
+                "opts": [
+                  "end",
+                  "very loud",
+                  "very old"
+                ],
+                "a": 0,
+                "exp": "Basic adjective.",
+                "level": "A1.2",
+                "category": "vocab"
+              },
+              {
+                "q": "'quiet' means:",
+                "opts": [
+                  "not noisy",
+                  "very loud",
+                  "very old"
+                ],
+                "a": 0,
+                "exp": "Basic adjective.",
+                "level": "A1.2",
+                "category": "vocab"
+              },
+              {
+                "q": "Choose the best meaning of 'instead':",
+                "opts": [
+                  "in place of",
+                  "yesterday",
+                  "angry"
+                ],
+                "a": 0,
+                "exp": "Common word.",
+                "level": "A2.2",
+                "category": "vocab"
+              },
+              {
+                "q": "Choose the best meaning of 'however':",
+                "opts": [
+                  "but",
+                  "yesterday",
+                  "angry"
+                ],
+                "a": 0,
+                "exp": "Common word.",
+                "level": "A2.2",
+                "category": "vocab"
+              },
+              {
+                "q": "Choose the best meaning of 'probably':",
+                "opts": [
+                  "maybe, likely",
+                  "yesterday",
+                  "angry"
+                ],
+                "a": 0,
+                "exp": "Common word.",
+                "level": "A2.2",
+                "category": "vocab"
+              },
+              {
+                "q": "Choose the best meaning of 'improve':",
+                "opts": [
+                  "get better",
+                  "yesterday",
+                  "angry"
+                ],
+                "a": 0,
+                "exp": "Common word.",
+                "level": "A2.2",
+                "category": "vocab"
+              },
+              {
+                "q": "Choose the best meaning of 'choose':",
+                "opts": [
+                  "pick",
+                  "yesterday",
+                  "angry"
+                ],
+                "a": 0,
+                "exp": "Common word.",
+                "level": "A2.2",
+                "category": "vocab"
+              },
+              {
+                "q": "'avoid' means:",
+                "opts": [
+                  "stay away from",
+                  "break",
+                  "forget"
+                ],
+                "a": 0,
+                "exp": "B1 vocabulary.",
+                "level": "B1.1",
+                "category": "vocab"
+              },
+              {
+                "q": "'require' means:",
+                "opts": [
+                  "need",
+                  "break",
+                  "forget"
+                ],
+                "a": 0,
+                "exp": "B1 vocabulary.",
+                "level": "B1.1",
+                "category": "vocab"
+              },
+              {
+                "q": "'suggest' means:",
+                "opts": [
+                  "recommend",
+                  "break",
+                  "forget"
+                ],
+                "a": 0,
+                "exp": "B1 vocabulary.",
+                "level": "B1.1",
+                "category": "vocab"
+              },
+              {
+                "q": "'comfortable' means:",
+                "opts": [
+                  "feels good",
+                  "break",
+                  "forget"
+                ],
+                "a": 0,
+                "exp": "B1 vocabulary.",
+                "level": "B1.1",
+                "category": "vocab"
+              },
+              {
+                "q": "'promise' means:",
+                "opts": [
+                  "say you will do it",
+                  "break",
+                  "forget"
+                ],
+                "a": 0,
+                "exp": "B1 vocabulary.",
+                "level": "B1.1",
+                "category": "vocab"
+              },
+              {
+                "q": "Meaning of 'consequently':",
+                "opts": [
+                  "as a result",
+                  "rarely",
+                  "sad"
+                ],
+                "a": 0,
+                "exp": "Higher-level word.",
+                "level": "B2",
+                "category": "vocab"
+              },
+              {
+                "q": "Meaning of 'nevertheless':",
+                "opts": [
+                  "even so",
+                  "rarely",
+                  "sad"
+                ],
+                "a": 0,
+                "exp": "Higher-level word.",
+                "level": "B2",
+                "category": "vocab"
+              },
+              {
+                "q": "Meaning of 'substantial':",
+                "opts": [
+                  "large",
+                  "rarely",
+                  "sad"
+                ],
+                "a": 0,
+                "exp": "Higher-level word.",
+                "level": "B2",
+                "category": "vocab"
+              },
+              {
+                "q": "Meaning of 'assume':",
+                "opts": [
+                  "suppose",
+                  "rarely",
+                  "sad"
+                ],
+                "a": 0,
+                "exp": "Higher-level word.",
+                "level": "B2",
+                "category": "vocab"
+              },
+              {
+                "q": "Meaning of 'remarkable':",
+                "opts": [
+                  "unusual and good",
+                  "rarely",
+                  "sad"
+                ],
+                "a": 0,
+                "exp": "Higher-level word.",
+                "level": "B2",
+                "category": "vocab"
+              }
+            ],
+            "reading": [
+              {
+                "id": "r_a1_1",
+                "level": "A1.1",
+                "text": "My name is Sara. I am 15 years old. I live in Sweden with my family. I go to school every day. After school, I play games and eat dinner.",
+                "qs": [
+                  {
+                    "q": "How old is Sara?",
+                    "a": "She is 15 years old.",
+                    "hint": "Look at the number."
+                  },
+                  {
+                    "q": "Where does she live?",
+                    "a": "She lives in Sweden.",
+                    "hint": "Country name."
+                  },
+                  {
+                    "q": "What does she do after school?",
+                    "a": "She plays games and eats dinner.",
+                    "hint": "After school."
+                  }
+                ]
+              },
+              {
+                "id": "r_a1_2",
+                "level": "A1.2",
+                "text": "Tom has a small dog. The dog is brown and very friendly. On Saturdays, Tom walks the dog in the park. The dog likes other dogs and runs a lot.",
+                "qs": [
+                  {
+                    "q": "What color is the dog?",
+                    "a": "It is brown.",
+                    "hint": "Color word."
+                  },
+                  {
+                    "q": "When does Tom walk the dog?",
+                    "a": "On Saturdays.",
+                    "hint": "Day/time."
+                  },
+                  {
+                    "q": "Where does he walk the dog?",
+                    "a": "In the park.",
+                    "hint": "Place."
+                  }
+                ]
+              },
+              {
+                "id": "r_a2_1",
+                "level": "A2.1",
+                "text": "Emma lives in London. She works at a bank near the river. She was born in 1998. On Mondays she starts work at 8:30. In the evening she studies English at home.",
+                "qs": [
+                  {
+                    "q": "Where does Emma work?",
+                    "a": "She works at a bank.",
+                    "hint": "Work place."
+                  },
+                  {
+                    "q": "When was she born?",
+                    "a": "She was born in 1998.",
+                    "hint": "Year."
+                  },
+                  {
+                    "q": "What time does she start work on Mondays?",
+                    "a": "At 8:30.",
+                    "hint": "Exact time."
+                  },
+                  {
+                    "q": "Where does she study English?",
+                    "a": "At home.",
+                    "hint": "Location."
+                  }
+                ]
+              },
+              {
+                "id": "r_a2_2",
+                "level": "A2.2",
+                "text": "Ali moved to a new city last year. At first, he felt nervous, but he joined a football club and met new friends. Now he feels more confident, and he practices English every evening.",
+                "qs": [
+                  {
+                    "q": "When did Ali move?",
+                    "a": "Last year.",
+                    "hint": "Time phrase."
+                  },
+                  {
+                    "q": "How did he meet new friends?",
+                    "a": "He joined a football club.",
+                    "hint": "Club."
+                  },
+                  {
+                    "q": "How does he feel now?",
+                    "a": "He feels more confident.",
+                    "hint": "Feeling word."
+                  },
+                  {
+                    "q": "When does he practice English?",
+                    "a": "Every evening.",
+                    "hint": "Frequency."
+                  }
+                ]
+              },
+              {
+                "id": "r_b1_1",
+                "level": "B1.1",
+                "text": "Many students feel tired in the morning. One reason is that teenagers often need more sleep than adults. If school starts too early, students may struggle to focus, which can affect learning and mood.",
+                "qs": [
+                  {
+                    "q": "Why do many students feel tired?",
+                    "a": "Because school starts too early and teenagers need more sleep.",
+                    "hint": "Reason."
+                  },
+                  {
+                    "q": "What can early school start affect?",
+                    "a": "Focus, learning, and mood.",
+                    "hint": "Effects."
+                  },
+                  {
+                    "q": "Who often needs more sleep?",
+                    "a": "Teenagers.",
+                    "hint": "Group."
+                  }
+                ]
+              },
+              {
+                "id": "r_b1_2",
+                "level": "B1.2",
+                "text": "Social media can be useful for staying in touch, but it can also create stress. People may compare themselves to others and feel that they are not good enough. A healthy habit is to take breaks and focus on real-life activities.",
+                "qs": [
+                  {
+                    "q": "What is one benefit of social media?",
+                    "a": "Staying in touch.",
+                    "hint": "Benefit."
+                  },
+                  {
+                    "q": "What is one problem it can cause?",
+                    "a": "Stress from comparing yourself to others.",
+                    "hint": "Problem."
+                  },
+                  {
+                    "q": "What is a healthy habit?",
+                    "a": "Taking breaks and focusing on real-life activities.",
+                    "hint": "Advice."
+                  }
+                ]
+              },
+              {
+                "id": "r_b2_1",
+                "level": "B2",
+                "text": "Motivation is not a constant resource; it fluctuates. People often wait to feel motivated before they start, but action can create motivation. Setting small goals and tracking progress can turn effort into a habit over time.",
+                "qs": [
+                  {
+                    "q": "Does motivation stay the same?",
+                    "a": "No, it fluctuates.",
+                    "hint": "Look for 'fluctuates'."
+                  },
+                  {
+                    "q": "What can create motivation?",
+                    "a": "Action can create motivation.",
+                    "hint": "Cause."
+                  },
+                  {
+                    "q": "What helps build habits?",
+                    "a": "Small goals and tracking progress.",
+                    "hint": "Strategies."
+                  }
+                ]
+              },
+              {
+                "id": "r_c1_1",
+                "level": "C1",
+                "text": "While technology has democratized access to information, it has also blurred the line between expertise and opinion. To navigate this landscape, individuals must cultivate critical thinking and evaluate sources with healthy skepticism.",
+                "qs": [
+                  {
+                    "q": "What line has been blurred?",
+                    "a": "The line between expertise and opinion.",
+                    "hint": "Contrast."
+                  },
+                  {
+                    "q": "What skills are needed?",
+                    "a": "Critical thinking and evaluating sources.",
+                    "hint": "Skills."
+                  },
+                  {
+                    "q": "How should people evaluate sources?",
+                    "a": "With healthy skepticism.",
+                    "hint": "Attitude."
+                  }
+                ]
+              }
+            ],
+            "writingPrompts": {
+              "A1.1": "Write 5 simple sentences about yourself. (Name, age, country, school, hobby).",
+              "A1.2": "Write 8 sentences about your day (morning, school, evening).",
+              "A2.1": "Write 10–12 sentences about your weekend. Use time words (on Saturday, in the evening).",
+              "A2.2": "Write 12–15 sentences about a problem you had and how you solved it.",
+              "B1.1": "Write 150 words: Should school start later? Give reasons and an example.",
+              "B1.2": "Write 170 words: Social media is good and bad. Explain both sides and your opinion.",
+              "B2": "Write 200 words: How can habits change your life? Use examples.",
+              "C1": "Write 220 words: Evaluate the impact of technology on knowledge and opinion."
+            }
+          }
+        }
+      ]
+    },
+    {
       "id": "prepositions",
       "title": "Prepositions: IN / ON / AT",
       "icon": "📍",
